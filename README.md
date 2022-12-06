@@ -15,7 +15,8 @@ sudo 7z a backups/mediawiki.aoirint.com_volumes_$(date '+%Y-%m-%d_%H-%M-%S').7z 
 sudo docker compose exec db mysqldump -u wikiuser -p mediawiki | sudo 7z a -si backups/mediawiki.aoirint.com_db_$(date '+%Y-%m-%d_%H-%M-%S').sql.7z
 
 sudo chown -R root:root backups/
-sudo chmod -R ga-rwx backups/
+sudo chmod -R a=X,u+rw backups/
+sudo chmod 755 backups/
 ```
 
 ## Restore
