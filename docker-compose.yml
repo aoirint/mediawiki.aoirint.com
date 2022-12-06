@@ -4,7 +4,7 @@ services:
     image: mediawiki:1.39
     restart: always
     ports:
-      - '127.0.0.1:8150:80'
+      - '127.0.0.1:8087:80'
     links:
       - db
     volumes:
@@ -12,8 +12,8 @@ services:
       # After initial setup, download LocalSettings.php to the same directory as
       # this yaml and uncomment the following line and use compose to restart
       # the mediawiki service
-      - ./mediawiki_data/LocalSettings.php:/var/www/html/LocalSettings.php
-      - ./mediawiki_extensions/extensions:/var/www/html/extensions
+      - ./volumes/mediawiki_data/LocalSettings.php:/var/www/html/LocalSettings.php
+      - ./volumes/mediawiki_extensions/extensions:/var/www/html/extensions
 
   db:
     image: mariadb:10.10
