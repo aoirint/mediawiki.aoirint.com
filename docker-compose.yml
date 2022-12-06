@@ -9,12 +9,13 @@ services:
       - db
     volumes:
       - ./volumes/mediawiki_images/images:/var/www/html/images
+      - ./volumes/mediawiki_extensions/extensions:/var/www/html/extensions
+      - ./volumes/mediawiki_data:/data
       # After initial setup, download LocalSettings.php to the same directory as
       # this yaml and uncomment the following line and use compose to restart
       # the mediawiki service
       - ./volumes/mediawiki_settings/LocalSettings.php:/var/www/html/LocalSettings.php
-      - ./volumes/mediawiki_extensions/extensions:/var/www/html/extensions
-      - ./volumes/mediawiki_data:/data
+      - ./volumes/mediawiki_settings/.htaccess:/var/www/html/.htaccess
 
   db:
     image: mariadb:10.10
