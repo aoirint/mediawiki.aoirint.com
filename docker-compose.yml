@@ -8,8 +8,8 @@ services:
     links:
       - db
     volumes:
-      - ./volumes/mediawiki_images/images:/var/www/html/images
-      - ./volumes/mediawiki_extensions/extensions:/var/www/html/extensions
+      - ./volumes/mediawiki_images:/var/www/html/images
+      - ./volumes/mediawiki_extensions:/var/www/html/extensions
       - ./volumes/mediawiki_data:/data
       # After initial setup, download LocalSettings.php to the same directory as
       # this yaml and uncomment the following line and use compose to restart
