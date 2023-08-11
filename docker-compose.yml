@@ -3,7 +3,7 @@ services:
   mediawiki:
     image: mediawiki:1.39
     restart: always
-    links:
+    depends_on:
       - db
     volumes:
       - ./volumes/mediawiki_images:/var/www/html/images
@@ -36,6 +36,8 @@ services:
     volumes:
       - ./nginx_templates:/etc/nginx/templates
       - ${NGINX_LOG_DIR:?}:/logs
+    ports:
+      - ${NGINX_HOST_PORT:?}:80
     environment:
       - NGINX_ENVSUBST_TEMPLATE_SUFFIX=.nginx
 
